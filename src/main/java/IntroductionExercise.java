@@ -11,13 +11,20 @@ public class IntroductionExercise {
         int decimal = 0;
         int length = binary.length;
 
-        // Umwandlung von Binär zu Dezimal
-        for (int i = 0; i < length; i++) {
+        // Umwandlung von Binär zu Dezimal unter Verwendung der Schiebeoperation
+        for (int j : binary) {
             // Überprüfen, ob der Binärwert 0 oder 1 ist
-            if (binary[i] != 0 && binary[i] != 1) {
+            if (j != 0 && j != 1) {
                 throw new IllegalArgumentException("Binärzahlen dürfen nur 0 oder 1 enthalten.");
             }
-            decimal += binary[i] * Math.pow(2, length - 1 - i);
+
+            // Überprüfen auf Overflow
+            if (decimal > (Integer.MAX_VALUE >> 1)) {
+                throw new ArithmeticException("Overflow: Die Binärzahl ist zu groß, um als Integer umgerechnet zu werden.");
+            }
+
+            // Schiebeoperation statt Math.pow
+            decimal = (decimal << 1) | j;
         }
 
         return decimal;
@@ -53,6 +60,8 @@ public class IntroductionExercise {
             System.out.println("Die Dezimalzahl ist: " + decimal);
 
         } catch (IllegalArgumentException e) {
+            System.out.println("Fehler: " + e.getMessage());
+        } catch (ArithmeticException e) {
             System.out.println("Fehler: " + e.getMessage());
         } catch (Exception e) {
             System.out.println("Ein unerwarteter Fehler ist aufgetreten: " + e.getMessage());
