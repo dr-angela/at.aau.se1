@@ -35,7 +35,7 @@ public class IntroductionExercise {
             while (true) {
                 // Eingabeaufforderung
                 System.out.println("Bitte geben Sie die Binärzahl als eine Sequenz von 0 und 1 ein (z.B. 1101) oder 'exit' zum Beenden: ");
-                String input = scanner.nextLine();
+                String input = scanner.nextLine().trim();
 
                 // Überprüfen, ob der Benutzer "exit" eingegeben hat
                 if (input.equalsIgnoreCase("exit")) {
@@ -49,18 +49,34 @@ public class IntroductionExercise {
                     continue;
                 }
 
+                // Entferne mögliche Leerzeichen in der Eingabe
+                input = input.replaceAll("\\s+", "");
+
+                // Überprüfen, ob die Binärzahl zu groß ist (mehr als 31 Zeichen)
+                if (input.length() > 31) {
+                    System.out.println("Die Binärzahl darf maximal 31 Stellen haben.");
+                    continue;
+                }
+
                 // Konvertiere den String in ein Integer-Array
                 int[] binaryArray = new int[input.length()];
+                boolean validInput = true;
                 for (int i = 0; i < input.length(); i++) {
                     char c = input.charAt(i);
 
                     // Überprüfen, ob die Eingabe nur 0 und 1 enthält
                     if (c != '0' && c != '1') {
                         System.out.println("Ungültige Eingabe. Nur 0 und 1 sind erlaubt.");
-                        continue;
+                        validInput = false;
+                        break;
                     }
 
                     binaryArray[i] = Character.getNumericValue(c);
+                }
+
+                // Falls die Eingabe ungültig war, die Schleife neu starten
+                if (!validInput) {
+                    continue;
                 }
 
                 // Berechnung der Dezimalzahl
