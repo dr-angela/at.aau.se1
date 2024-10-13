@@ -9,7 +9,6 @@ public class IntroductionExercise {
         }
 
         int decimal = 0;
-        int length = binary.length;
 
         // Umwandlung von Binär zu Dezimal unter Verwendung der Schiebeoperation
         for (int j : binary) {
@@ -33,36 +32,46 @@ public class IntroductionExercise {
     public static void main(String[] args) {
 
         try (Scanner scanner = new Scanner(System.in)) {
-            // Eingabeaufforderung
-            System.out.println("Bitte geben Sie die Binärzahl als eine Sequenz von 0 und 1 ein (z.B. 1101): ");
-            String input = scanner.nextLine();
+            while (true) {
+                // Eingabeaufforderung
+                System.out.println("Bitte geben Sie die Binärzahl als eine Sequenz von 0 und 1 ein (z.B. 1101) oder 'exit' zum Beenden: ");
+                String input = scanner.nextLine();
 
-            // Überprüfen, ob die Eingabe leer ist
-            if (input == null || input.isEmpty()) {
-                throw new IllegalArgumentException("Die Eingabe darf nicht leer sein.");
-            }
-
-            // Konvertiere den String in ein Integer-Array
-            int[] binaryArray = new int[input.length()];
-            for (int i = 0; i < input.length(); i++) {
-                char c = input.charAt(i);
-
-                // Überprüfen, ob die Eingabe nur 0 und 1 enthält
-                if (c != '0' && c != '1') {
-                    throw new IllegalArgumentException("Ungültige Eingabe. Nur 0 und 1 sind erlaubt.");
+                // Überprüfen, ob der Benutzer "exit" eingegeben hat
+                if (input.equalsIgnoreCase("exit")) {
+                    System.out.println("Programm wird beendet.");
+                    break;
                 }
 
-                binaryArray[i] = Character.getNumericValue(c);
+                // Überprüfen, ob die Eingabe leer ist
+                if (input.isEmpty()) {
+                    System.out.println("Die Eingabe darf nicht leer sein.");
+                    continue;
+                }
+
+                // Konvertiere den String in ein Integer-Array
+                int[] binaryArray = new int[input.length()];
+                for (int i = 0; i < input.length(); i++) {
+                    char c = input.charAt(i);
+
+                    // Überprüfen, ob die Eingabe nur 0 und 1 enthält
+                    if (c != '0' && c != '1') {
+                        System.out.println("Ungültige Eingabe. Nur 0 und 1 sind erlaubt.");
+                        continue;
+                    }
+
+                    binaryArray[i] = Character.getNumericValue(c);
+                }
+
+                // Berechnung der Dezimalzahl
+                try {
+                    int decimal = binary2decimal(binaryArray);
+                    System.out.println("Die Dezimalzahl ist: " + decimal);
+                } catch (ArithmeticException e) {
+                    System.out.println("Fehler: " + e.getMessage());
+                }
             }
 
-            // Berechnung der Dezimalzahl
-            int decimal = binary2decimal(binaryArray);
-            System.out.println("Die Dezimalzahl ist: " + decimal);
-
-        } catch (IllegalArgumentException e) {
-            System.out.println("Fehler: " + e.getMessage());
-        } catch (ArithmeticException e) {
-            System.out.println("Fehler: " + e.getMessage());
         } catch (Exception e) {
             System.out.println("Ein unerwarteter Fehler ist aufgetreten: " + e.getMessage());
         }
