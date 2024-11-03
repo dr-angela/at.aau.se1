@@ -1,120 +1,106 @@
-// This was written by test preview GPT o1 in order to
-// have another view on Abbildung 1 - I gave GPT a list of
-// Pseudo Code, as I had a look on Abbildung 1
-
 public class PseudoCodeProgram {
     public static void main(String[] args) {
-        // S6: Initialize variables
-        int c = 1;     // You can change this value to test different paths
-        int num1 = 10; // Sample value
-        int num2 = 0;  // Sample value
-        int result = 0;
+        testValues();
+    }
 
+    // S6: Initialization
+    public static void testValues() {
+        // Test values for c
+        int[] cValues = {0, 1, 2, 3, 4, 5, 6, -1, -5};
+        // Test values for num2
+        int[] num2Values = {0, 1, 2, 3, 4, 5, -1, -2, 10, -10};
+
+        for (int i = 0; i < cValues.length; i++) {
+            int c = cValues[i];
+            int num2 = num2Values[i % num2Values.length];
+            System.out.println("\nTesting with c = " + c + ", num2 = " + num2);
+            executeLogic(c, num2);
+        }
+    }
+
+    public static void executeLogic(int c, int num2) {
         // S6 to S10 (without condition)
+
         // S10: Condition to exit or proceed
-        boolean conditionInS10 = true; // Set to true to start the program flow
+        if (c < 0) {
+            // From S10, exit if condition is false
+            System.out.println("S10: c < 0, exiting loop.");
+            return;
+        }
 
-        while (conditionInS10) {
-            // From S10, there is an exit if the condition in S10 is false
-            // Since conditionInS10 is true, proceed to S11-19
+        // Start of the loop that represents the control flow
+        while (c >= 0) {
+            // S11-19: Executing statements when S10 condition is true
+            System.out.println("S11-19: Executing statements.");
 
-            // S11-19: Perform some operations or statements
-            System.out.println("S11-19: Performing initial operations.");
+            // S21: Proceed without condition
+            System.out.println("S21: Reached.");
 
-            // Proceed to S21
-            // S21: Check if (c == 0)
-            System.out.println("S21: Checking if c == 0");
+            // S22: Exit if c == 0
             if (c == 0) {
-                // From S21 to S22 and then exit
-                // S22: Exit program
-                System.out.println("S22: Exiting program because c == 0");
-                break;
+                System.out.println("S22: c == 0, exiting.");
+                break; // Exit the loop
             } else {
-                // From S21 to S26 if !(c == 0)
-                // S26: Check if (c < 1 || c > 5)
-                System.out.println("S26: Checking if c < 1 || c > 5");
+                // S26: Check if c < 1 || c > 5
                 if (c < 1 || c > 5) {
-                    // From S26 to S27 if (c < 1 || c > 5)
-                    // S27: Invalid choice, back to S10
-                    System.out.println("S27: Invalid value of c (" + c + "), returning to S10");
-                    // Modify c to a valid value or exit loop
-                    c = 1; // Adjust c to a valid value to proceed
-                    // Back to S10
-                    continue;
+                    // S27: Invalid c, return to S10
+                    System.out.println("S27: Invalid c (" + c + "), returning to S10.");
+                    // Adjust c for demonstration purposes
+                    c = (c > 5) ? c - 1 : c + 1;
+                    continue; // Return to the start of the loop
                 } else {
-                    // From S26 to S31-34 if !(c < 1 || c > 5)
-                    // S31-34: Proceed with valid c
-                    System.out.println("S31-34: Valid value of c (" + c + "), proceeding");
+                    // S31-34: Valid c, proceed
+                    System.out.println("S31-34: Valid c (" + c + "), proceeding.");
 
-                    // Proceed to S36
                     // S36: Switch cases based on c
-                    System.out.println("S36: Switching based on value of c");
+                    System.out.println("S36: Switching based on c.");
+
                     switch (c) {
                         case 1:
-                            // From S36 to S38 when (c == 1)
-                            // S38: Perform operation for c == 1
-                            System.out.println("S38: c == 1, performing addition");
-                            result = num1 + num2;
-                            System.out.println("Result of addition: " + result);
-                            // From S38 to S57
+                            // S38: c == 1
+                            System.out.println("S38: c == 1.");
+                            // S57: Return to S10
                             break;
                         case 2:
-                            // From S36 to S41 when (c == 2)
-                            // S41: Perform operation for c == 2
-                            System.out.println("S41: c == 2, performing subtraction");
-                            result = num1 - num2;
-                            System.out.println("Result of subtraction: " + result);
-                            // From S41 to S57
+                            // S41: c == 2
+                            System.out.println("S41: c == 2.");
+                            // S57: Return to S10
                             break;
                         case 3:
-                            // From S36 to S44 when (c == 3)
-                            // S44: Perform operation for c == 3
-                            System.out.println("S44: c == 3, performing multiplication");
-                            result = num1 * num2;
-                            System.out.println("Result of multiplication: " + result);
-                            // From S44 to S57
+                            // S44: c == 3
+                            System.out.println("S44: c == 3.");
+                            // S57: Return to S10
                             break;
                         case 4:
-                            // From S36 to S47 when (c == 4)
-                            // S47: Check (num2 == 0)
-                            System.out.println("S47: c == 4, checking if num2 == 0 for division");
+                            // S47: c == 4
+                            System.out.println("S47: c == 4.");
                             if (num2 == 0) {
-                                // From S47 to S48 when (num2 == 0)
-                                // S48: Cannot divide by zero, back to S10
-                                System.out.println("S48: Cannot divide by zero, returning to S10");
-                                // Back to S10
-                                break;
+                                // S48: num2 == 0, return to S10
+                                System.out.println("S48: num2 == 0, cannot divide by zero, returning to S10.");
                             } else {
-                                // From S47 to S51 when (num2 != 0)
-                                // S51: Perform division
-                                System.out.println("S51: Performing division");
-                                result = num1 / num2;
-                                System.out.println("Result of division: " + result);
-                                // From S51 to S57
+                                // S51: num2 != 0
+                                System.out.println("S51: num2 != 0, proceeding with division.");
                             }
+                            // S57: Return to S10
                             break;
                         case 5:
-                            // Assuming c == 5 represents a modulus operation
-                            System.out.println("SXX: c == 5, performing modulus operation");
-                            result = num1 % num2;
-                            System.out.println("Result of modulus: " + result);
-                            // Proceed to S57
+                            // Assuming c == 5 represents another operation
+                            System.out.println("SXX: c == 5.");
+                            // S57: Return to S10
                             break;
                         default:
-                            // From S36 to S54 when default
-                            // S54: Invalid choice, back to S10
-                            System.out.println("S54: Invalid choice in switch, returning to S10");
-                            // Back to S10
+                            // S54: Default case, return to S10
+                            System.out.println("S54: Default case, invalid c, returning to S10.");
                             break;
                     }
-                    // From S57 back to S10
-                    System.out.println("S57: Operation completed, returning to S10");
-                    // For demonstration, modify c or conditionInS10 to exit loop
-                    conditionInS10 = false; // Set to false to exit the loop
                 }
             }
+
+            // S57: Return to S10
+            System.out.println("S57: Completed iteration, returning to S10.");
+            // For demonstration, break to avoid infinite loop
+            break;
         }
-        // Program ends
-        System.out.println("Program terminated.");
+        System.out.println("Program terminated for c = " + c + ".");
     }
 }
