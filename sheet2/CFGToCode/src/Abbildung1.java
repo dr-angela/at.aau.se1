@@ -40,43 +40,44 @@ public class Abbildung1 {
             if (c == 0) {
                 System.out.println("Knoten 22: c == 0 erreicht, Abbruch");
                 break;  // Ende der Schleife, falls c == 0
-            } else {
+            } else { // falls !(c==0)
                 // Knoten 26 bis 27
                 if (c < 1 || c > 5) {
                     // Bedingung ist true, also zurück zu S10
                     System.out.println("Zurück zu Knoten S10: Bedingung 'c < 1 oder c > 5' ist wahr");
-                    c = (c > 5) ? c - 1 : c + 1;  // Wert von c anpassen, um dynamisch zu bleiben
+                    c = (c > 5) ? c - 1 : c + 1;  // gpt4 Vorschlag: Wert von c anpassen, um dynamisch zu bleiben
                     continue;  // Springt zurück zur Bedingung von S10
                 } else {
                     // Knoten 31-34: wenn die Bedingung NOT true (also !(c < 1 || c > 5))
                     System.out.println("Knoten 31-34: Bedingung 'c < 1 oder c > 5' ist nicht wahr");
                     // Knoten 36 bis 57: switch-Statement
+                    System.out.println("Entscheidung Switch-Cases. Fall 1, 2, 3, 4, default. ");
                     switch (c) {
                         case 1:
-                            System.out.println("Knoten 38 zu 57: Fall c == 1");
+                            System.out.println("Von Knoten 36 zu Knoten 38 zu 57: Fall c == 1");
                             break;
                         case 2:
-                            System.out.println("Knoten 41 zu 57: Fall c == 2");
+                            System.out.println("Von Knoten 36 zu Knoten 41 zu 57: Fall c == 2");
                             break;
                         case 3:
-                            System.out.println("Knoten 44 zu 57: Fall c == 3");
+                            System.out.println("Von Koten 36 zu Knoten 44 zu 57: Fall c == 3");
                             break;
                         case 4:
-                            System.out.println("Knoten 47 zu 51: Fall c == 4");
-                            // Knoten 48 bis 54
+                            System.out.println("Entscheidung ob von Knoten 36 zu Knoten 47 und 48 oder zu 51");
+                            // Knoten 48
                             if (num2 == 0) {
-                                System.out.println("Knoten 47 zu 48: num2 == 0, zurück zu S10");
+                                System.out.println("Von Knoten 36 zu Knoten 47 zu 48 zu 10: Fall c==4 und num2 == 0 (zurück zu S10)");
                             } else {
-                                System.out.println("Knoten 47 zu 51: num2 != 0");
+                                System.out.println("Von Knoten 36 zu Knoten 47 zu 51: Fall c==4 und num2 != 0");
                             }
                             break;
                         default:
-                            System.out.println("Knoten 54: default, zurück zu S10");
+                            System.out.println("Von Knoten 36 zu Knoten 54 zu 10: Fall default, zurück zu S10");
                             break;
                     }
                 }
             }
-            System.out.println("Knoten 57 erreicht. Kante zurück nach S10. Erster Durchlauf beendet.");
+            System.out.println("Knoten 57 erreicht (Fall 1, 2, 3, oder 4 und num2 != 0). Kante zurück nach S10. Erster Durchlauf beendet.");
             break;  // Schleifenabbruch nach dem ersten vollständigen Durchlauf, um Endlosschleifen zu vermeiden
         }
     }
