@@ -11,6 +11,8 @@
  * - Included loop control mechanisms to prevent infinite loops.
  */
 
+// correction: whole thing is a do-while
+
 
 import java.util.Random;
 
@@ -75,6 +77,7 @@ public class Abbildung2 {
                     switch (c) {
                         case 1:
                             log("ACTION", "Node 35", "Transitioning to Node 37 because c == 1.");
+                            // here no break, so we can reach 39-41
                             log("ACTION", "Node 37", "Transitioning to Node 39-41.");
                             log("ACTION", "Node 39-41", "Executing operation for c == 1 and transitioning to Node 65.");
                             break;
