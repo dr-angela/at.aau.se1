@@ -33,7 +33,7 @@ public class Abbildung1 {
             System.out.println("Eintritt zu 11-19, weil c >= 0"); // Schleife, die wieder zu Knoten 10 zurückführt
             // Knoten 11-19: if S10 true
             for (int i = 0; i < 5; i++) {
-                System.out.println("Looping in Knoten 11-19, i = " + i + ", weil i < 5");
+                System.out.println("Loop in Knoten 11-19, i = " + i + ", weil i < 5");
             }
 
             // Knoten 21
@@ -71,13 +71,14 @@ public class Abbildung1 {
                             // Knoten 48
                             if (num2 == 0) {
                                 System.out.println("Von Knoten 36 zu Knoten 47 zu 48 zu 10: Fall c==4 und num2 == 0 (zurück zu S10)");
+                                // hier eine continue zu 10 machen
                             } else {
                                 System.out.println("Von Knoten 36 zu Knoten 47 zu 51: Fall c==4 und num2 != 0");
                             }
                             break;
                         default:
                             System.out.println("Von Knoten 36 zu Knoten 54 zu 10: Fall default, zurück zu S10");
-                            break;
+                            break; // anstelle von break eine continue zu 10 machen
                     }
                 }
             }
