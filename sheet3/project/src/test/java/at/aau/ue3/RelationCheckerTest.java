@@ -1,3 +1,10 @@
+/***
+ * Angela Drucks, 12203559, SE1 W24
+ * Sheet 03
+ * Exercise 3.5
+ **/
+
+
 package at.aau.ue3;
 
 import org.junit.jupiter.api.Assertions;
