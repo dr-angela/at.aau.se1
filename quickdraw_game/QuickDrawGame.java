@@ -5,7 +5,19 @@ public class QuickDrawGame {
     public static void main(String[] args) {
         System.out.println("Welcome to the Quickdraw Game!");
         System.out.println("Press ENTER as fast as you can when you see 'DRAW!'");
+        System.out.println("Get ready...");
 
+        // Countdown Timer: 3... 2... 1...
+        try {
+            for (int i = 3; i > 0; i--) {
+                System.out.println(i + "...");
+                Thread.sleep(1000); // 1 second delay
+            }
+        } catch (InterruptedException e) {
+            System.out.println("Countdown interrupted!");
+        }
+
+        // Random delay before "DRAW!"
         try {
             Thread.sleep((int)(Math.random() * 5000) + 1000); // Random delay between 1-6 seconds
         } catch (InterruptedException e) {
@@ -14,6 +26,7 @@ public class QuickDrawGame {
 
         System.out.println("DRAW!");
 
+        // Measure reaction time
         long startTime = System.currentTimeMillis();
         Scanner scanner = new Scanner(System.in);
         scanner.nextLine();
@@ -21,11 +34,7 @@ public class QuickDrawGame {
 
         long reactionTime = endTime - startTime;
 
-	// Negative Zeiten verhindern
-	if (reactionTime < 0) {
-    		reactionTime = 0;
-	}
-
+        // Display reaction time and feedback
         System.out.println("Your reaction time: " + reactionTime + "ms");
         if (reactionTime < 300) {
             System.out.println("Quickdraw! You're lightning fast!");
