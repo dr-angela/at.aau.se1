@@ -21,6 +21,11 @@ public class QuickDrawGame {
 
         long reactionTime = endTime - startTime;
 
+	// Negative Zeiten verhindern
+	if (reactionTime < 0) {
+    		reactionTime = 0;
+	}
+
         System.out.println("Your reaction time: " + reactionTime + "ms");
         if (reactionTime < 300) {
             System.out.println("Quickdraw! You're lightning fast!");
