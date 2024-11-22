@@ -43,5 +43,8 @@ public class QuickDrawGame {
         } else {
             System.out.println("Too slow! Practice makes perfect.");
         }
+
+        // New feature: Game Over message
+        System.out.println("Game Over. Thanks for playing!");
     }
 }
