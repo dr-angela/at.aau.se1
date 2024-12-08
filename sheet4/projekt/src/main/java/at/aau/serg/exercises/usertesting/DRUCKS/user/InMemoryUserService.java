@@ -48,6 +48,8 @@ public class InMemoryUserService implements UserService {
   @Override
   public void resetPassword(String username, String newPassword) {
     // TODO implement
+    User user = getUser(username);
+    user.setPassword(passwordEncoder.encode(newPassword));
   }
 
   @Override

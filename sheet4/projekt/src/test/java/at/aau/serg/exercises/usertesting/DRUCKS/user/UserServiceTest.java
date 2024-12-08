@@ -26,7 +26,7 @@ public class UserServiceTest {
         });
     }
 
-    // 4.1.1. Register a user that is not activated
+    // 4.1.1 - Register a user that is not activated
     @Test
     void testRegisterCreatesUserButNotActivated() {
         User user = userService.register("test@example.com", "password123");
@@ -36,7 +36,7 @@ public class UserServiceTest {
         assertFalse(user.isActivated()); // Verify the user is not activated
     }
 
-    // 4.1.2. Verify that registered users can log in
+    // 4.1.2 - Verify that registered users can log in
     @Test
     void testRegisteredUserCanLogin() {
         // Arrange: Register and activate a user
@@ -50,24 +50,48 @@ public class UserServiceTest {
         assertTrue(loginSuccessful); // Verify that the login is successful
     }
 
-    // 4.1.3. Verify password reset functionality
+    // 4.1.3 - Verify password reset functionality (step-by-step approach)
+
     @Test
-    void testPasswordResetAllowsNewPasswordForLogin() {
-        // Arrange: Register and activate a user
+    void testResetPasswordUpdatesUserPassword() {
+        // Arrange
+        User user = userService.register("test@example.com", "oldPassword123");
+        userService.activateUser("test@example.com");
+
+        // Act
+        userService.resetPassword("test@example.com", "newPassword123");
+
+        // Assert
+        assertNotNull(user);
+        assertEquals("newPassword123", user.getPassword(), "Password should be updated after reset");
+    }
+
+    @Test
+    void testLoginFailsWithOldPasswordAfterReset() {
+        // Arrange
         userService.register("test@example.com", "oldPassword123");
         userService.activateUser("test@example.com");
 
-        // Act: Reset the user's password (assuming resetPassword is implemented)
+        // Act
         userService.resetPassword("test@example.com", "newPassword123");
 
-        // Assert:
-        // Login with the old password should not work
+        // Assert
         assertFalse(userService.login("test@example.com", "oldPassword123"),
-                "Login with the old password should fail");
+                "Login with the old password should fail after a reset");
+    }
 
-        // Login with the new password should work
+    @Test
+    void testLoginSucceedsWithNewPasswordAfterReset() {
+        // Arrange
+        userService.register("test@example.com", "oldPassword123");
+        userService.activateUser("test@example.com");
+
+        // Act
+        userService.resetPassword("test@example.com", "newPassword123");
+
+        // Assert
         assertTrue(userService.login("test@example.com", "newPassword123"),
-                "Login with the new password should succeed");
+                "Login with the new password should succeed after a reset");
     }
 
 }
