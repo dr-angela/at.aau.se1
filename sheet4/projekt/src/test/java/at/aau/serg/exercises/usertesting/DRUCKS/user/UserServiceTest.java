@@ -2,6 +2,8 @@ package at.aau.serg.exercises.usertesting.DRUCKS.user;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -26,14 +28,20 @@ public class UserServiceTest {
         });
     }
 
-    // 4.1.1 - Register a user that is not activated
-    @Test
-    void testRegisterCreatesUserButNotActivated() {
-        User user = userService.register("test@example.com", "password123");
+    // 4.1.1 - Register a user that is not activated (parameterized test)
+    @ParameterizedTest
+    @CsvSource({
+            "test1@example.com, password123",
+            "user2@example.com, pass456",
+            "hello@domain.com, strongpass789"
+    })
+    void testRegisterCreatesUserButNotActivatedParameterized(String email, String password) {
+        // Arrange & Act: Register the user
+        User user = userService.register(email, password);
 
-        // Assert: User is created but not activated
-        assertNotNull(user); // Check if the user is created
-        assertFalse(user.isActivated()); // Verify the user is not activated
+        // Assert: Check if user is created but not activated
+        assertNotNull(user, "User should be created");
+        assertFalse(user.isActivated(), "User should not be activated after registration");
     }
 
     // 4.1.2 - Verify that registered users can log in
@@ -137,5 +145,4 @@ public class UserServiceTest {
         assertThrows(IllegalStateException.class,
                 () -> userService.activateUser("nonexistent@example.com"));
     }
-
 }
