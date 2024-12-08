@@ -94,4 +94,17 @@ public class UserServiceTest {
                 "Login with the new password should succeed after a reset");
     }
 
+    // 4.1.4 - Verify user activation functionality
+    @Test
+    void testUserIsActivatedAfterActivation() {
+        // Arrange: Register a user
+        User user = userService.register("test@example.com", "password123");
+
+        // Act: Activate the user
+        userService.activateUser("test@example.com");
+
+        // Assert: Verify the user is activated
+        assertTrue(user.isActivated(), "User should be activated after calling activateUser");
+    }
+
 }
