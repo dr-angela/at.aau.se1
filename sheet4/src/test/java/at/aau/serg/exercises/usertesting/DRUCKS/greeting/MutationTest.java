@@ -1,6 +1,8 @@
-package at.aau.serg.exercises.usertesting.NACHNAME.greeting;
+package at.aau.serg.exercises.usertesting.DRUCKS.greeting;
 
 import org.junit.jupiter.api.Test;
+
+// Angela Drucks, 12203559
 
 public class MutationTest {
 
