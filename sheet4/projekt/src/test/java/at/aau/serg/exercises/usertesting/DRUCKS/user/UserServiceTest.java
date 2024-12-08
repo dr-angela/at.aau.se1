@@ -107,4 +107,35 @@ public class UserServiceTest {
         assertTrue(user.isActivated(), "User should be activated after calling activateUser");
     }
 
+    // 4.1.5 - Verify exceptions for invalid inputs or states
+
+    @Test
+    void testRegisterThrowsExceptionForInvalidUsername() {
+        assertThrows(IllegalArgumentException.class,
+                () -> userService.register(null, "password123"));
+        assertThrows(IllegalArgumentException.class,
+                () -> userService.register("", "password123"));
+    }
+
+    @Test
+    void testRegisterThrowsExceptionForInvalidPassword() {
+        assertThrows(IllegalArgumentException.class,
+                () -> userService.register("test@example.com", null));
+        assertThrows(IllegalArgumentException.class,
+                () -> userService.register("test@example.com", ""));
+    }
+
+    @Test
+    void testRegisterThrowsExceptionForDuplicateUsername() {
+        userService.register("test@example.com", "password123");
+        assertThrows(IllegalStateException.class,
+                () -> userService.register("test@example.com", "password123"));
+    }
+
+    @Test
+    void testActivateThrowsExceptionForNonExistentUser() {
+        assertThrows(IllegalStateException.class,
+                () -> userService.activateUser("nonexistent@example.com"));
+    }
+
 }
