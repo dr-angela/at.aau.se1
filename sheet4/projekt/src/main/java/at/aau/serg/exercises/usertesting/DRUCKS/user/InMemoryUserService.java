@@ -1,4 +1,4 @@
-package at.aau.serg.exercises.usertesting.NACHNAME.user;
+package at.aau.serg.exercises.usertesting.DRUCKS.user;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.ArrayList;

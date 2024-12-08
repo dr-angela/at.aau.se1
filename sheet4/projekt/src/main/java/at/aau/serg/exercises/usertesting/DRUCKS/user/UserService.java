@@ -1,4 +1,4 @@
-package at.aau.serg.exercises.usertesting.NACHNAME.user;
+package at.aau.serg.exercises.usertesting.DRUCKS.user;
 
 public interface UserService {
 
@@ -12,7 +12,7 @@ public interface UserService {
    * @throws IllegalArgumentException if password is blank or null
    * @throws IllegalStateException    if a user with this username already exists
    */
-  User register(String username, String password);
+  at.aau.serg.exercises.usertesting.DRUCKS.user.User register(String username, String password);
 
   /**
    * @param username - unique username to identify the user

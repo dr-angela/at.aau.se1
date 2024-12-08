@@ -1,10 +1,10 @@
-package at.aau.serg.exercises.usertesting.NACHNAME;
+package at.aau.serg.exercises.usertesting.DRUCKS;
 
-import at.aau.serg.exercises.usertesting.NACHNAME.greeting.ConsoleMailService;
-import at.aau.serg.exercises.usertesting.NACHNAME.greeting.GreetingService;
-import at.aau.serg.exercises.usertesting.NACHNAME.greeting.MailService;
-import at.aau.serg.exercises.usertesting.NACHNAME.user.InMemoryUserService;
-import at.aau.serg.exercises.usertesting.NACHNAME.user.UserService;
+import at.aau.serg.exercises.usertesting.DRUCKS.greeting.ConsoleMailService;
+import at.aau.serg.exercises.usertesting.DRUCKS.greeting.GreetingService;
+import at.aau.serg.exercises.usertesting.DRUCKS.greeting.MailService;
+import at.aau.serg.exercises.usertesting.DRUCKS.user.InMemoryUserService;
+import at.aau.serg.exercises.usertesting.DRUCKS.user.UserService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 

@@ -1,4 +1,4 @@
-package at.aau.serg.exercises.usertesting.NACHNAME.user;
+package at.aau.serg.exercises.usertesting.DRUCKS.user;
 
 public class SimpleHash {
 

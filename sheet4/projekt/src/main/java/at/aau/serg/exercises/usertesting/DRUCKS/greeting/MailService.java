@@ -1,6 +1,6 @@
-package at.aau.serg.exercises.usertesting.NACHNAME.greeting;
+package at.aau.serg.exercises.usertesting.DRUCKS.greeting;
 
-import at.aau.serg.exercises.usertesting.NACHNAME.user.User;
+import at.aau.serg.exercises.usertesting.DRUCKS.user.User;
 
 public interface MailService {
 
