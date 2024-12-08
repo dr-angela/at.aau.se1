@@ -6,6 +6,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+// Angela Drucks, 12203559
 public class UserServiceTest {
 
     private UserService userService; // Field for the UserService instance
