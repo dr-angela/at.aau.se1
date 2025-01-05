@@ -104,4 +104,5 @@ public class GameInstanceDaoTest {
         GameInstance deletedGameInstance = gameInstanceDao.findOne(gameInstance.getId());
         assertNull(deletedGameInstance);  // Check if the object is really deleted
     }
+
 }

@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 // A. Drucks, 12203559
 // In PlayerDaoTest, all functionality related to ListPlayerDao and the ListDao methods are tested.
+
 public class PlayerDaoTest {
 
     private ListPlayerDao playerDao;
@@ -81,4 +82,49 @@ public class PlayerDaoTest {
         // Check if the username was updated correctly
         assertEquals("Updated Player Name", player.getUsername());  // Verify if the username was updated
     }
+
+    // Test attempting to delete a Player twice
+    @Test
+    public void testDoubleDelete() {
+        // Create a new Player
+        Player player = new Player(null, "Player to Double Delete", "doubledelete@example.com");
+        player = playerDao.insert(player);  // Insert a Player object
+
+        // Delete the Player once
+        boolean firstDelete = playerDao.delete(player.getId());
+        assertTrue(firstDelete);  // Ensure the player was deleted successfully
+
+        // Attempt to delete the Player again
+        boolean secondDelete = playerDao.delete(player.getId());
+        assertFalse(secondDelete);  // Ensure the second delete attempt fails (player should no longer exist)
+    }
+
+    // Test inserting a Player with null or empty username
+    @Test
+    public void testInsertPlayerWithNullUsername() {
+        Player player = new Player(null, null, "nullusername@example.com");
+        player = playerDao.insert(player);  // Insert a Player object with null username
+
+        assertNotNull(player.getId());  // Check if ID is set after insertion
+        assertNull(player.getUsername());  // Check if the username is null as expected
+    }
+
+    @Test
+    public void testInsertPlayerWithEmptyUsername() {
+        Player player = new Player(null, "", "emptyusername@example.com");
+        player = playerDao.insert(player);  // Insert a Player object with empty username
+
+        assertNotNull(player.getId());  // Check if ID is set after insertion
+        assertEquals("", player.getUsername());  // Check if the username is empty
+    }
+
+    // Test finding a Player with an invalid ID
+    @Test
+    public void testFindPlayerWithInvalidId() {
+        Player foundPlayer = playerDao.findOne(-1L);  // Attempt to find a Player with an invalid ID
+        assertNull(foundPlayer);  // Ensure no Player is found with an invalid ID
+    }
+
+
+
 }
