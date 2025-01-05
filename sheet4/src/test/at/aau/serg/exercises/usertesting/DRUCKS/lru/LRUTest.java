@@ -1,4 +1,4 @@
-package at.aau.serg.exercises.usertesting.NACHNAME.lru;
+package at.aau.serg.exercises.usertesting.DRUCKS.lru;
 
 import org.junit.jupiter.api.Test;
 
