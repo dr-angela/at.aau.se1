@@ -9,6 +9,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.Collections;
 
 // A. Drucks, 12203559
+// mvn clean test jacoco:report
+// mvn clean test pitest:mutationCoverage
 // In GameInstanceDaoTest, all functionality related to ListGameInstanceDao and the ListDao methods are tested.
 
 public class GameInstanceDaoTest {
@@ -72,15 +74,34 @@ public class GameInstanceDaoTest {
     // Test updating a GameInstance
     @Test
     public void testUpdate() {
-        // Erstellen eines GameInstance-Objekts mit einem alten Namen
+        // Create a GameInstance object with an old name
         GameInstance gameInstance = new GameInstance("Old Game Name", GameMode.SINGLE, Collections.emptyList(), 5, true);
-        gameInstance = gameInstanceDao.insert(gameInstance);  // Einfügen des GameInstance-Objekts
+        gameInstance = gameInstanceDao.insert(gameInstance);  // Insert the GameInstance object
 
-        // Erstellen eines neuen GameInstance-Objekts mit dem neuen Namen
+        // Create a new GameInstance object with the updated name
         gameInstance = new GameInstance(gameInstance.getId(), "Updated Game Name", GameMode.SINGLE, Collections.emptyList(), 5, true);
-        gameInstance = gameInstanceDao.update(gameInstance);  // Update des GameInstance-Objekts
+        gameInstance = gameInstanceDao.update(gameInstance);  // Update the GameInstance object
 
-        // Überprüfen, ob der Name aktualisiert wurde
-        assertEquals("Updated Game Name", gameInstance.getName());  // Check if the name was updated
+        // Check if the name was updated correctly
+        assertEquals("Updated Game Name", gameInstance.getName());  // Verify if the name was updated
+    }
+
+    @Test
+    public void testDoubleDelete() {
+        // Create and insert a GameInstance object
+        GameInstance gameInstance = new GameInstance("Game to Delete", GameMode.SINGLE, Collections.emptyList(), 5, true);
+        gameInstance = gameInstanceDao.insert(gameInstance);
+
+        // Try deleting the GameInstance object
+        boolean deleted = gameInstanceDao.delete(gameInstance.getId());
+        assertTrue(deleted);  // Check if the deletion was successful
+
+        // Try deleting the same object again to test if it handles non-existent items correctly
+        boolean deleteAgain = gameInstanceDao.delete(gameInstance.getId());
+        assertFalse(deleteAgain);  // Ensure that deleting a non-existing item returns false
+
+        // Verify that the object is no longer present in the list
+        GameInstance deletedGameInstance = gameInstanceDao.findOne(gameInstance.getId());
+        assertNull(deletedGameInstance);  // Check if the object is really deleted
     }
 }
