@@ -25,7 +25,7 @@ public class CliGameRunnerParameterTest {
             "false, 2, SINGLE"       // Test without tutorial, 2 rounds, SINGLE mode
     })
     public void testStandardPathWithGameModes(boolean tutorialEnabled, int totalRounds, GameMode gameMode) {
-        // Create players for the game
+        // 1: Create players for the game
         List<Player> players = List.of(
                 new Player(1L, "Player1", "player1@example.com"),
                 new Player(2L, "Player2", "player2@example.com"),
