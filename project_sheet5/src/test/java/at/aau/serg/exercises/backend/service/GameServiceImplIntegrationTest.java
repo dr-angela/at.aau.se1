@@ -23,6 +23,7 @@ import static org.mockito.Mockito.*;
 // In GameServiceImplIntegrationTest, all functionality related to game creation, deletion, game state management,
 // and player associations with games are tested. This includes various game modes (SINGLE, ALL_VS, ALL_VS_ONE) and
 // the handling of non-existent players and games.
+// mock data only exists during run time of tests
 
 public class GameServiceImplIntegrationTest {
 
@@ -61,7 +62,7 @@ public class GameServiceImplIntegrationTest {
         when(playerDao.findOne(player1.getId())).thenReturn(player1);
         when(playerDao.findOne(player2.getId())).thenReturn(player2);
 
-        // Mock `gameInstanceDao.insert` to return a GameInstance with a simulated database-generated ID
+        // Mock `gameInstanceDao.insert` to return a GameInstance with a simulated database generated ID
         when(gameInstanceDao.insert(any(GameInstance.class)))
                 .thenAnswer(invocation -> {
                     GameInstance game = invocation.getArgument(0);
@@ -72,8 +73,9 @@ public class GameServiceImplIntegrationTest {
         // Mock `gameInstanceDao.findOne` to return the gameInstance mock
         when(gameInstanceDao.findOne(anyLong())).thenReturn(gameInstance);
 
-        // No need to manually set gameRunner with a setter if it's annotated with `@Mock`
     }
+
+    // Tests
 
     @Test
     public void testCreateGameWithSingleMode() throws GameServiceException {

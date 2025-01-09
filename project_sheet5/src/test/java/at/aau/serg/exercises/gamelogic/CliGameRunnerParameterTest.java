@@ -16,7 +16,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class CliGameRunnerParameterTest {
 
-    // This test will run multiple times with different inputs
+    // This test will run multiple times with different inputs, using @ParameterizedTest mechanism, that uses
+    // params from @csv source (tutorialEnabled, totalRounds, gameMode)
+
     @ParameterizedTest
     @CsvSource({
             "true, 3, SINGLE",       // Test with tutorial, 3 rounds, SINGLE mode
