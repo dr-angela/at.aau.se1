@@ -5,6 +5,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+// A. Drucks, 12203559
+// mvn clean test jacoco:report
+// mvn pitest:mutationCoverage
+
 public class MyMathTest {
 
     private MyMath myMath;
