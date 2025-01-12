@@ -6,9 +6,10 @@ public class Character {
     public Integer level;
 
     /**
-     * Allowed classes: Mage, Tank, DamageDealer
+     * Changed from string to enum.
+     * Allowed: MAGE, TANK, DAMAGE_DEALER
      */
-    public String characterClass;
+    public CharacterClass characterClass;
 
     public double damage;
 
@@ -18,11 +19,10 @@ public class Character {
     public int damageRange;
 
     /**
-     * 1 := melee (tank always has this)
-     * 2 := range
-     * 3 := magic (only mage has this, always)
+     * Changed from short to enum.
+     * Allowed: MELEE, RANGE, MAGIC
      */
-    public short damageType;
+    public DamageType damageType;
 
     /**
      * None (null), fire, poison, pierce
