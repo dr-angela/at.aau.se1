@@ -124,7 +124,10 @@ public class Character {
         }
     }
 
+    //  Replace magic number with MAX_LEVEL constant
+    private static final int MAX_LEVEL = 30;
+
     public boolean hasMaxLevel() {
-        return level.equals(30);
+        return level.equals(MAX_LEVEL);
     }
 }
