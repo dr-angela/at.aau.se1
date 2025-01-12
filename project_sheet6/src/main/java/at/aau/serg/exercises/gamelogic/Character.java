@@ -24,7 +24,7 @@ public class Character {
     public DamageType damageType;
 
     /**
-     * None (null), fire, poison, pierce
+     * every character has it's damageEffect
      */
     public String damageEffect;
 
@@ -34,9 +34,82 @@ public class Character {
     public boolean hasShieldEquipped;
 
     /**
-     * Available mana of mage
+     * Available mana (for mages)
      */
     public int mana;
+
+    // Getter und Setter for every field
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
+    }
+
+    public CharacterClass getCharacterClass() {
+        return characterClass;
+    }
+
+    public void setCharacterClass(CharacterClass characterClass) {
+        this.characterClass = characterClass;
+    }
+
+    public double getDamage() {
+        return damage;
+    }
+
+    public void setDamage(double damage) {
+        this.damage = damage;
+    }
+
+    public int getDamageRange() {
+        return damageRange;
+    }
+
+    public void setDamageRange(int damageRange) {
+        this.damageRange = damageRange;
+    }
+
+    public DamageType getDamageType() {
+        return damageType;
+    }
+
+    public void setDamageType(DamageType damageType) {
+        this.damageType = damageType;
+    }
+
+    public String getDamageEffect() {
+        return damageEffect;
+    }
+
+    public void setDamageEffect(String damageEffect) {
+        this.damageEffect = damageEffect;
+    }
+
+    public boolean isHasShieldEquipped() {
+        return hasShieldEquipped;
+    }
+
+    public void setHasShieldEquipped(boolean hasShieldEquipped) {
+        this.hasShieldEquipped = hasShieldEquipped;
+    }
+
+    public int getMana() {
+        return mana;
+    }
+
+    public void setMana(int mana) {
+        this.mana = mana;
+    }
 
     public String getDescription() {
         switch (characterClass) {
