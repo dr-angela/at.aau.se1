@@ -1,5 +1,8 @@
 package at.aau.serg.exercises.gamelogic;
 
+// 12203559, A. Drucks
+
+
 public class Character {
     public String name;
     public Integer level;
