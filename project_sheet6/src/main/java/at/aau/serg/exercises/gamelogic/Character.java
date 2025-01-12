@@ -2,7 +2,6 @@ package at.aau.serg.exercises.gamelogic;
 
 public class Character {
     public String name;
-
     public Integer level;
 
     /**
@@ -41,19 +40,18 @@ public class Character {
 
     public String getDescription() {
         switch (characterClass) {
-            case "Mage":
+            case MAGE:
                 return "Mage: A spellcaster who wields powerful magic.";
-            case "Tank":
+            case TANK:
                 return "Tank: A sturdy protector who absorbs damage and defends allies.";
-            case "DamageDealer":
+            case DAMAGE_DEALER:
                 return "Damage Dealer: A swift attacker who deals heavy damage.";
             default:
                 throw new IllegalStateException("Unexpected character class: " + characterClass);
         }
     }
 
-    public boolean hasMaxLevel(){
+    public boolean hasMaxLevel() {
         return level.equals(30);
     }
-
 }
