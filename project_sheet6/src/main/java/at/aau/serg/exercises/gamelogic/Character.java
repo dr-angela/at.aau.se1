@@ -38,6 +38,23 @@ public class Character {
      */
     public int mana;
 
+
+    // Refactored: Add constructor to initialize all fields of Character class
+    public Character(String name, Integer level, CharacterClass characterClass, double damage,
+                     int damageRange, DamageType damageType, String damageEffect,
+                     boolean hasShieldEquipped, int mana) {
+        this.name = name;
+        this.level = level;
+        this.characterClass = characterClass;
+        this.damage = damage;
+        this.damageRange = damageRange;
+        this.damageType = damageType;
+        this.damageEffect = damageEffect;
+        this.hasShieldEquipped = hasShieldEquipped;
+        this.mana = mana;
+    }
+
+
     // Getter und Setter for every field
     public String getName() {
         return name;
